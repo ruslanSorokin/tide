@@ -83,5 +83,6 @@ tide_vi_mode_color_default white
 tide_vi_mode_color_insert cyan
 tide_vi_mode_color_replace green
 tide_vi_mode_color_visual yellow
+tide_vi_mode_explicitly_change_cursor_shape false
 tide_virtual_env_bg_color black
 tide_virtual_env_color cyan

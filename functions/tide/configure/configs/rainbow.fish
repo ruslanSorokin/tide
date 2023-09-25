@@ -108,5 +108,6 @@ tide_vi_mode_color_default 000000
 tide_vi_mode_color_insert 000000
 tide_vi_mode_color_replace 000000
 tide_vi_mode_color_visual 000000
+tide_vi_mode_explicitly_change_cursor_shape false
 tide_virtual_env_bg_color 444444
 tide_virtual_env_color 00AFAF
