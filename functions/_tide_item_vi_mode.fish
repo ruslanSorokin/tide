@@ -1,59 +1,48 @@
 function _tide_item_vi_mode
-    # TODO: we need to be able to print not only these hard-coded here shapes,
-    # but also user defined ones, which are specified with following
-    # variables:
-    # - `fish_cursor_default`
-    # - `fish_cursor_insert`
-    # - `fish_cursor_replace_one`
-    # - `fish_cursor_visual`
-    #
-    # I believe, that it may be better to calculate them ones in some init
-    # function since they may contain second element with `blink` property.
-    #
-    # See: https://fishshell.com/docs/current/interactive.html#vi-mode-commands
-
-    if test "$fish_key_bindings" = fish_default_key_bindings
+    if test "$fish_key_bindings" = fish_default_key_bindings || test "$tide_vi_mode_cursor_explicitly_change_shape" = false
         return
     end
-    if test "$tide_vi_mode_explicitly_change_cursor_shape" = true
-        switch $fish_bind_mode
-            case default
-                tide_vi_mode_bg_color=$tide_vi_mode_bg_color_default tide_vi_mode_color=$tide_vi_mode_color_default \
-                    _tide_print_item vi_mode $tide_vi_mode_icon_default
-                echo -en "\e[2 q"
 
-            case insert
-                tide_vi_mode_bg_color=$tide_vi_mode_bg_color_insert tide_vi_mode_color=$tide_vi_mode_color_insert \
-                    _tide_print_item vi_mode $tide_vi_mode_icon_insert
-                echo -en "\e[6 q"
+    set -l shape ""
 
-            case replace replace_one
-                tide_vi_mode_bg_color=$tide_vi_mode_bg_color_replace tide_vi_mode_color=$tide_vi_mode_color_replace \
-                    _tide_print_item vi_mode $tide_vi_mode_icon_replace
-                echo -en "\e[4 q"
+    switch $fish_bind_mode
+        case default
+            tide_vi_mode_bg_color=$tide_vi_mode_bg_color_default tide_vi_mode_color=$tide_vi_mode_color_default \
+                _tide_print_item vi_mode $tide_vi_mode_icon_default
+            set shape $tide_vi_mode_cursor_shape_default
 
-            case visual
-                tide_vi_mode_bg_color=$tide_vi_mode_bg_color_visual tide_vi_mode_color=$tide_vi_mode_color_visual \
-                    _tide_print_item vi_mode $tide_vi_mode_icon_visual
-                echo -en "\e[2 q"
-        end
-    else
-        switch $fish_bind_mode
-            case default
-                tide_vi_mode_bg_color=$tide_vi_mode_bg_color_default tide_vi_mode_color=$tide_vi_mode_color_default \
-                    _tide_print_item vi_mode $tide_vi_mode_icon_default
+        case insert
+            tide_vi_mode_bg_color=$tide_vi_mode_bg_color_insert tide_vi_mode_color=$tide_vi_mode_color_insert \
+                _tide_print_item vi_mode $tide_vi_mode_icon_insert
+            set shape $tide_vi_mode_cursor_shape_insert
 
-            case insert
-                tide_vi_mode_bg_color=$tide_vi_mode_bg_color_insert tide_vi_mode_color=$tide_vi_mode_color_insert \
-                    _tide_print_item vi_mode $tide_vi_mode_icon_insert
+        case replace replace_one
+            tide_vi_mode_bg_color=$tide_vi_mode_bg_color_replace tide_vi_mode_color=$tide_vi_mode_color_replace \
+                _tide_print_item vi_mode $tide_vi_mode_icon_replace
+            set shape $tide_vi_mode_cursor_shape_replace
 
-            case replace replace_one
-                tide_vi_mode_bg_color=$tide_vi_mode_bg_color_replace tide_vi_mode_color=$tide_vi_mode_color_replace \
-                    _tide_print_item vi_mode $tide_vi_mode_icon_replace
-
-            case visual
-                tide_vi_mode_bg_color=$tide_vi_mode_bg_color_visual tide_vi_mode_color=$tide_vi_mode_color_visual \
-                    _tide_print_item vi_mode $tide_vi_mode_icon_visual
-        end
+        case visual
+            tide_vi_mode_bg_color=$tide_vi_mode_bg_color_visual tide_vi_mode_color=$tide_vi_mode_color_visual \
+                _tide_print_item vi_mode $tide_vi_mode_icon_visual
+            set shape $tide_vi_mode_cursor_shape_visual
     end
+
+    set -l symbol $shape[1]
+
+    switch "$symbol"
+        case block
+            set symbol 2
+        case underscore
+            set symbol 4
+        case line
+            set symbol 6
+        case '*'
+            return
+    end
+
+    if contains blink $shape
+        set symbol (math $symbol - 1)
+    end
+
+    echo -en "\e[$symbol q"
 end
