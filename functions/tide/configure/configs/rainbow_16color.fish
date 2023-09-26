@@ -87,5 +87,10 @@ tide_vi_mode_icon_default D
 tide_vi_mode_icon_insert I
 tide_vi_mode_icon_replace R
 tide_vi_mode_icon_visual V
+tide_vi_mode_cursor_explicitly_change_shape false
+tide_vi_mode_cursor_shape_default block
+tide_vi_mode_cursor_shape_insert line
+tide_vi_mode_cursor_shape_replace underscore
+tide_vi_mode_cursor_shape_visual block
 tide_virtual_env_bg_color brblack
 tide_virtual_env_color cyan
