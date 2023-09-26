@@ -1,5 +1,5 @@
 function _tide_item_vi_mode
-    if test "$fish_key_bindings" = fish_default_key_bindings || test "$tide_vi_mode_cursor_explicitly_change_shape" = false
+    if test "$fish_key_bindings" = fish_default_key_bindings
         return
     end
 
@@ -25,6 +25,10 @@ function _tide_item_vi_mode
             tide_vi_mode_bg_color=$tide_vi_mode_bg_color_visual tide_vi_mode_color=$tide_vi_mode_color_visual \
                 _tide_print_item vi_mode $tide_vi_mode_icon_visual
             set shape $tide_vi_mode_cursor_shape_visual
+    end
+
+    if test "$tide_vi_mode_cursor_explicitly_change_shape" = false
+        return
     end
 
     set -l symbol $shape[1]
