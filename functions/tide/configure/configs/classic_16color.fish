@@ -90,5 +90,3 @@ tide_vi_mode_cursor_shape_default block
 tide_vi_mode_cursor_shape_insert line
 tide_vi_mode_cursor_shape_replace underscore
 tide_vi_mode_cursor_shape_visual block
-tide_virtual_env_bg_color 444444
-tide_virtual_env_color 00AFAF
