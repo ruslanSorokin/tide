@@ -69,6 +69,7 @@ tide_prompt_color_frame_and_connection 6C6C6C
 tide_prompt_color_separator_same_color 949494
 tide_prompt_min_cols 34
 tide_prompt_pad_items false
+tide_prompt_transient_enabled false
 tide_pulumi_bg_color normal
 tide_pulumi_color F7BF2A
 tide_pwd_bg_color normal
@@ -76,8 +77,10 @@ tide_pwd_color_anchors $_tide_color_light_blue
 tide_pwd_color_dirs $_tide_color_dark_blue
 tide_pwd_color_truncated_dirs 8787AF
 tide_pwd_markers .bzr .citc .git .hg .node-version .python-version .ruby-version .shorten_folder_marker .svn .terraform Cargo.toml composer.json CVS go.mod package.json
+tide_python_bg_color normal
+tide_python_color 00AFAF
 tide_right_prompt_frame_enabled false
-tide_right_prompt_items status cmd_duration context jobs direnv node virtual_env rustc java php pulumi ruby go gcloud kubectl distrobox toolbox terraform aws nix_shell crystal elixir
+tide_right_prompt_items status cmd_duration context jobs direnv node python rustc java php pulumi ruby go gcloud kubectl distrobox toolbox terraform aws nix_shell crystal elixir
 tide_right_prompt_prefix ' '
 tide_right_prompt_separator_diff_color ' '
 tide_right_prompt_separator_same_color ' '
@@ -113,5 +116,5 @@ tide_vi_mode_cursor_shape_default block
 tide_vi_mode_cursor_shape_insert line
 tide_vi_mode_cursor_shape_replace underscore
 tide_vi_mode_cursor_shape_visual block
-tide_virtual_env_bg_color normal
+tide_virtual_env_bg_color 444444
 tide_virtual_env_color 00AFAF
