@@ -52,6 +52,8 @@ function _tide_title -a text
     set_color -o
     string pad --width (math --scale=0 "$fake_columns/2" + (string length $text)/2) $text
     set_color normal
+
+    set -g _tide_configure_first_option_after_title
 end
 
 function _tide_option -a symbol text
@@ -59,7 +61,10 @@ function _tide_option -a symbol text
     set -ga _tide_option_list $text
 
     if not set -q _flag_auto
+        set -g _tide_configure_first_prompt_after_option
+
         set_color -o
+        set -e _tide_configure_first_option_after_title || echo
         echo "($symbol) $text"
         set_color normal
     end
@@ -85,6 +90,7 @@ function _tide_menu -a func
 
     argparse no-restart -- $argv # Add no-restart option for first menu
 
+    echo
     if not set -q _flag_no_restart
         set -f r r
         echo '(r) Restart from the beginning'
@@ -117,10 +123,9 @@ function _tide_menu -a func
     end
 end
 
-function _tide_display_prompt -a var_name var_value
+function _tide_display_prompt
     set -q _flag_auto && return
 
-    test -n "$var_name" && set -g $var_name $var_value
     _fake_tide_cache_variables
     set -l prompt (_fake_tide_prompt)
 
@@ -128,9 +133,22 @@ function _tide_display_prompt -a var_name var_value
     set -l right_prompt_string (string pad --width (math $fake_columns-$bottom_left_prompt_string_length) $prompt[1])
     set -l prompt[-1] "$prompt[-1]$right_prompt_string"
 
-    string unescape $prompt[2..]
+    if set -q _configure_transient
+        if contains newline $fake_tide_left_prompt_items
+            string unescape $prompt[3..]
+        else
+            _fake_tide_item_character
+            echo
+        end
+    else
+        if not set -q _tide_configure_first_prompt_after_option
+            test "$fake_tide_prompt_add_newline_before" = true && echo
+        end
+        string unescape $prompt[2..]
+    end
+
+    set -e _tide_configure_first_prompt_after_option
     set_color normal
-    echo
 end
 
 function _tide_exit_configure

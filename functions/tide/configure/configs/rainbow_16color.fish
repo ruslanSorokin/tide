@@ -59,6 +59,8 @@ tide_pwd_bg_color blue
 tide_pwd_color_anchors brwhite
 tide_pwd_color_dirs brwhite
 tide_pwd_color_truncated_dirs white
+tide_python_bg_color brblack
+tide_python_color cyan
 tide_ruby_bg_color red
 tide_ruby_color black
 tide_rustc_bg_color red
@@ -92,5 +94,5 @@ tide_vi_mode_cursor_shape_default block
 tide_vi_mode_cursor_shape_insert line
 tide_vi_mode_cursor_shape_replace underscore
 tide_vi_mode_cursor_shape_visual block
-tide_virtual_env_bg_color brblack
-tide_virtual_env_color cyan
+tide_virtual_env_bg_color 444444
+tide_virtual_env_color 00AFAF
