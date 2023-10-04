@@ -1,5 +1,17 @@
 # Changelog
 
+## [v6.0.0][] (Oct 03 2023)
+
+### Features
+
+- Add transient prompt setting, which automatically collapses old prompts for more condensed scrollback
+- Add automatic configuration, which lets users automate the configuration wizard
+- Add `tide reload` subcommand, to re-initialize the prompt without requiring a new shell session
+- Replace `virtual_env` item with a new and improved `python` item
+- Replace `chruby` item with a new and improved `ruby` item ([#437][] - @cmer)
+- Extensive use of `string match` variable setting for minor speedups
+- Reduce globbing in `pwd` item, which can be costly on slow filesystems
+
 ## [v5.6.0][] (Jul 04 2023)
 
 ### Features
@@ -576,3 +588,4 @@
 [v5.5.0]: https://github.com/IlanCosman/tide/tree/v5.5.0
 [v5.5.1]: https://github.com/IlanCosman/tide/tree/v5.5.1
 [v5.6.0]: https://github.com/IlanCosman/tide/tree/v5.6.0
+[v6.0.0]: https://github.com/IlanCosman/tide/tree/v6.0.0
