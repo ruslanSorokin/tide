@@ -21,7 +21,7 @@ tide_direnv_color_denied FF0000
 tide_distrobox_bg_color normal
 tide_distrobox_color FF00FF
 tide_docker_bg_color normal
-tide_docker_color 2496ED
+tide_docker_color 0db7ed
 tide_docker_default_contexts default colima
 tide_elixir_bg_color normal
 tide_elixir_color 4E2A8E
