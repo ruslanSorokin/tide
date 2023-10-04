@@ -47,7 +47,7 @@ tide_java_color ED8B00
 tide_jobs_bg_color normal
 tide_jobs_color $_tide_color_dark_green
 tide_kubectl_bg_color normal
-tide_kubectl_color 326CE5
+tide_kubectl_color 3970e4
 tide_left_prompt_frame_enabled false
 tide_left_prompt_items pwd git newline character
 tide_left_prompt_prefix ''
