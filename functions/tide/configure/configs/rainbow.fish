@@ -20,7 +20,7 @@ tide_direnv_color 000000
 tide_direnv_color_denied 000000
 tide_distrobox_bg_color FF00FF
 tide_distrobox_color 000000
-tide_docker_bg_color 2496ED
+tide_docker_bg_color 0db7ed
 tide_docker_color 000000
 tide_docker_default_contexts default colima
 tide_elixir_bg_color 4E2A8E
@@ -46,7 +46,7 @@ tide_java_bg_color ED8B00
 tide_java_color 000000
 tide_jobs_bg_color 444444
 tide_jobs_color 4E9A06
-tide_kubectl_bg_color 326CE5
+tide_kubectl_bg_color 3970e4
 tide_kubectl_color 000000
 tide_left_prompt_frame_enabled true
 tide_left_prompt_items pwd git newline
