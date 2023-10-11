@@ -90,3 +90,5 @@ tide_vi_mode_cursor_shape_default block
 tide_vi_mode_cursor_shape_insert line
 tide_vi_mode_cursor_shape_replace underscore
 tide_vi_mode_cursor_shape_visual block
+tide_zig_bg_color black
+tide_zig_color yellow
